@@ -99,7 +99,7 @@
             </div>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>RSSI:</strong></td>
         <td id="rssi" style="padding: 10px;">
             <div id="rssi-progress" class="progress-bar">
@@ -108,7 +108,7 @@
             </div>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>LTE RSRQ:</strong></td>
         <td id="rsrq-4g" style="padding: 10px;">
             <div id="lte-rsrq-progress" class="progress-bar">
@@ -117,7 +117,7 @@
             </div>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>LTE RSRP:</strong></td>
         <td id="lte-rsrp" style="padding: 10px;">
             <div id="lte-rsrp-progress" class="progress-bar">
@@ -126,7 +126,7 @@
             </div>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>LTE SINR:</strong></td>
         <td id="lte-sinr" style="padding: 10px;">
             <div id="lte-sinr-progress" class="progress-bar">
@@ -167,48 +167,86 @@
 </br>
 
 <h2>Cell Information</h2>
-<table class="table" id="signal-info-table" style="border-spacing: 10px 20px;">
-    <!-- Plain text fields for Network and CSQ -->
-    <tr>
-        <td style="width: 33%; padding: 10px;"><strong>MCC/MNC:</strong></td>
+<table class="table" id="cell-info-table" style="border-spacing: 10px 20px;">
+    <!-- LTE / NSA cell info - hidden when the modem is in 5G SA mode -->
+    <tr class="hide-if-sa">
+        <td style="width: 33%; padding: 10px;"><strong>LTE MCC/MNC:</strong></td>
         <td id="mcc-mnc-combined" style="padding: 10px;">
             <span id="mcc">Loading...</span> <span id="mnc">Loading...</span>
         </td>
     </tr>
-    <tr>
-        <td style="width: 33%; padding: 10px;"><strong>Cell ID:</strong></td>
+    <tr class="hide-if-sa">
+        <td style="width: 33%; padding: 10px;"><strong>LTE Cell ID:</strong></td>
         <td id="cellid-combined" style="padding: 10px;">
             <span id="cellid">Loading...</span> (<span id="deccellid">Loading...</span>)
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>PCC: (Band / PCI / EARFCN)</strong></td>
         <td id="pcc_td" style="padding: 10px;">
             <span id="pcc">Loading...</span>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>SCC 1:</strong></td>
         <td id="scc1_td" style="padding: 10px;">
             <span id="scc1">Loading...</span>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>SCC 2:</strong></td>
         <td id="scc2_td" style="padding: 10px;">
             <span id="scc2">Loading...</span>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>SCC 3:</strong></td>
         <td id="scc3_td" style="padding: 10px;">
             <span id="scc3">Loading...</span>
         </td>
     </tr>
-    <tr>
+    <tr class="hide-if-sa">
         <td style="width: 33%; padding: 10px;"><strong>SCC 4:</strong></td>
         <td id="scc4_td" style="padding: 10px;">
             <span id="scc4">Loading...</span>
+        </td>
+    </tr>
+
+    <!-- NR5G SA cell info - shown only when the modem is in 5G SA mode -->
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G MCC/MNC:</strong></td>
+        <td id="sa-mcc-mnc-combined" style="padding: 10px;">
+            <span id="sa-mcc">Loading...</span> <span id="sa-mnc">Loading...</span>
+        </td>
+    </tr>
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G Cell ID:</strong></td>
+        <td id="sa-cellid-combined" style="padding: 10px;">
+            <span id="sa-cellid">Loading...</span> (<span id="sa-deccellid">Loading...</span>)
+        </td>
+    </tr>
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G PCI:</strong></td>
+        <td id="sa-pci_td" style="padding: 10px;">
+            <span id="sa-pci">Loading...</span>
+        </td>
+    </tr>
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G TAC:</strong></td>
+        <td id="sa-tac_td" style="padding: 10px;">
+            <span id="sa-tac">Loading...</span>
+        </td>
+    </tr>
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G Band / ARFCN:</strong></td>
+        <td id="sa-band_td" style="padding: 10px;">
+            <span id="sa-band">Loading...</span> / <span id="sa-arfcn">Loading...</span>
+        </td>
+    </tr>
+    <tr class="show-if-sa" style="display: none;">
+        <td style="width: 33%; padding: 10px;"><strong>NR5G SCS:</strong></td>
+        <td id="sa-scs_td" style="padding: 10px;">
+            <span id="sa-scs">Loading...</span>
         </td>
     </tr>
 </table>
@@ -342,6 +380,28 @@ function updateModemInfo() {
             document.getElementById('scc2').innerText = data["SCC2"] || "-";
             document.getElementById('scc3').innerText = data["SCC3"] || "-";
             document.getElementById('scc4').innerText = data["SCC4"] || "-";
+
+            // NR5G SA-only fields
+            document.getElementById('sa-mcc').innerText = data["NR5G MCC"] || "No Signal";
+            document.getElementById('sa-mnc').innerText = data["NR5G MNC"] || "No Signal";
+            document.getElementById('sa-cellid').innerText = data["NR5G Cell ID"] || "N/A";
+            document.getElementById('sa-deccellid').innerText = data["NR5G Cell ID (Dec)"] || "N/A";
+            document.getElementById('sa-pci').innerText = data["NR5G PCI"] || "N/A";
+            document.getElementById('sa-tac').innerText = data["NR5G TAC"] || "N/A";
+            document.getElementById('sa-arfcn').innerText = data["NR5G ARFCN"] || "N/A";
+            document.getElementById('sa-band').innerText = data["NR5G Band"] || "N/A";
+            document.getElementById('sa-scs').innerText = data["NR5G SCS"] || "N/A";
+
+            // Toggle LTE/NSA vs SA-only rows depending on the detected network mode.
+            // When the modem is on 5G SA, LTE and NSA-specific rows are hidden to reduce confusion,
+            // and the dedicated NR5G SA rows are shown instead.
+            const isSA = (data["Network"] || "").includes("NR5G-SA");
+            document.querySelectorAll('.hide-if-sa').forEach(row => {
+                row.style.display = isSA ? 'none' : '';
+            });
+            document.querySelectorAll('.show-if-sa').forEach(row => {
+                row.style.display = isSA ? '' : 'none';
+            });
 
             // Update progress bars for relevant metrics
             const csqper = parseFloat(data["Signal Strength"]);
